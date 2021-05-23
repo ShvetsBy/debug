@@ -14,6 +14,7 @@ module.exports = (req, res, next) => {
     else {
       jwt.verify(sessionToken, 'lets_play_sum_games_man', (err, decoded) => {
         if (decoded) {
+          console.log(User);
           User.findOne({ where: { id: decoded.id } }).then(
             (user) => {
               req.user = user;
