@@ -1,13 +1,14 @@
 const express = require('express');
 const db = require('./db');
-var user = require('./controllers/usercontroller');
+const user = require('./controllers/usercontroller');
 const validator = require('./middleware/validate-session');
-var game = require('./controllers/gamecontroller');
+const game = require('./controllers/gamecontroller');
 require('dotenv').config();
 const PORT = process.env.LOCALHOST_PORT;
 
 const app = express();
 db.sync();
+app.use(require('body-parser').json());
 app.use('/', (req, res, next) => {
   if (req.originalUrl === '/') {
     res.send('Service is running!');

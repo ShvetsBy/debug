@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
   if (req.method == 'OPTIONS') {
     next(); // allowing options as a method for request
   } else {
-    var sessionToken = req.headers.authorization;
+    const sessionToken = req.headers.authorization;
     console.log('sessionToken: ' + sessionToken);
     if (!sessionToken)
       return res
